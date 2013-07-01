@@ -1,0 +1,15 @@
+<config>
+  <menu>
+    <disabler translate="title" module="blueacorn_disabler">
+      <title>Disabler</title>
+      <sort_order>1</sort_order>
+      <children>
+        <example>
+          <title>Disable Modules</title>
+          <sort_order>1</sort_order>
+          <action>adminhtml/disabler/index</action>
+        </example>
+      </children>
+    </disabler>
+  </menu>
+</config>
