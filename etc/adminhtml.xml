@@ -4,12 +4,31 @@
       <title>Disabler</title>
       <sort_order>1</sort_order>
       <children>
-        <example>
+        <disable>
           <title>Disable Modules</title>
           <sort_order>1</sort_order>
           <action>adminhtml/disabler/index</action>
-        </example>
+        </disable>
       </children>
     </disabler>
   </menu>
+
+    <acl>
+      <resources>
+        <admin>
+          <children>
+            <blueacorn translate="title" module="blueacorn_disabler">
+              <title>Top Level Disabler Menu Item</title>
+              <sort_order>1</sort_order>
+	      <children>
+		<disable>
+		  <title>Disable Modules</title>
+		</disable>
+	      </children>
+            </blueacorn>
+          </children>
+        </admin>
+      </resources>
+    </acl>
+
 </config>
