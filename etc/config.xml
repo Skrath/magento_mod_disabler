@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+  <modules>
+    <BlueAcorn_Disabler>
+      <version>0.0.1</version>
+    </BlueAcorn_Disabler>
+  </modules>
+
+</config>
