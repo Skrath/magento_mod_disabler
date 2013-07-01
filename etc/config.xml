@@ -7,4 +7,22 @@
     </BlueAcorn_Disabler>
   </modules>
 
+  <global>
+
+    <events>
+
+      <controller_front_init_before>
+	<observers>
+	  <blueacorn_disabler>
+	    <class>BlueAcorn_Disabler_Model_Observer</class>
+	    <method>disableModules</method>
+	    <type>singleton</type>
+	  </blueacorn_disabler>
+	</observers>
+      </controller_front_init_before>
+
+    </events>
+
+  </global>
+
 </config>
