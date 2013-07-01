@@ -9,6 +9,12 @@
 
   <global>
 
+    <helpers>
+      <blueacorn_disabler>
+        <class>BlueAcorn_Disabler_Helper</class>
+      </blueacorn_disabler>
+    </helpers>
+
     <events>
 
       <controller_front_init_before>
