@@ -7,6 +7,18 @@
     </BlueAcorn_Disabler>
   </modules>
 
+  <admin>
+    <routers>
+      <adminhtml>
+        <args>
+          <modules>
+            <BlueAcorn_Disabler after="Mage_Adminhtml">BlueAcorn_Disabler</BlueAcorn_Disabler>
+          </modules>
+        </args>
+      </adminhtml>
+    </routers>
+  </admin>
+
   <global>
 
     <helpers>
