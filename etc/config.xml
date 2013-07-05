@@ -7,19 +7,20 @@
     </BlueAcorn_Disabler>
   </modules>
 
-  <admin>
-    <routers>
-      <adminhtml>
-        <args>
-          <modules>
-            <BlueAcorn_Disabler after="Mage_Adminhtml">BlueAcorn_Disabler</BlueAcorn_Disabler>
-          </modules>
-        </args>
-      </adminhtml>
-    </routers>
-  </admin>
-
   <global>
+
+    <blocks>
+      <blueacorn_disabler>
+	<class>BlueAcorn_Disabler_Block</class>
+      </blueacorn_disabler>
+
+      <enterprise_customersegment>
+	<rewrite>
+	  <adminhtml_customersegment_edit_tabs>BlueAcorn_Disabler_Block_Adminhtml_Customersegment_Edit_Tabs</adminhtml_customersegment_edit_tabs>
+	</rewrite>
+      </enterprise_customersegment>
+
+    </blocks>
 
     <helpers>
       <blueacorn_disabler>
