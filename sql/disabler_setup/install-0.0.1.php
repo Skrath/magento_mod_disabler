@@ -18,7 +18,7 @@ $table = $installer->getConnection()->newTable($installer->getTable('disabler/di
                    ->addColumn('module_name', Varien_Db_Ddl_Table::TYPE_TEXT, null, array(
                        'nullable' => false,
                    ), 'Module Name')
-                   ->addForeignKey('FK_disabled_modules_segment', 'segment_id', $installer->getTable('enterprise_customersegment/segment'), 'segment_id' );
+                   ->addForeignKey('FK_disabled_modules_segment', 'segment_id', $installer->getTable('enterprise_customersegment/segment'), 'segment_id', 'cascade');
 /*     ->addColumn('title', Varien_Db_Ddl_Table::TYPE_TEXT, null, array( */
 /*         'nullable' => false, */
 /*         ), 'Blogpost Title') */
