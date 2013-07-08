@@ -70,4 +70,17 @@
 
   </global>
 
+  <admin>
+    <routers>
+      <adminhtml>
+	<args>
+	  <modules>
+	    <blueacorn_disabler before="Enterprise_Customersegment">BlueAcorn_Disabler_Adminhtml</blueacorn_disabler>
+	  </modules>
+	</args>
+      </adminhtml>
+    </routers>
+  </admin>
+
+
 </config>
