@@ -33,10 +33,40 @@ class BlueAcorn_Disabler_Adminhtml_CustomersegmentController extends Enterprise_
 {
 
     /**
-     * Save customer segment
+     * Save disabled modules for this segment
      */
-    public function saveAction()
-    {
+    public function saveAction() {
+        $data = $this->getRequest()->getPost();
+
+        if ($data) {
+            try {
+                $disabledModel = Mage::getModel('disabler/disabledmodule');
+                $disabledModelCollection  = $disabledModel->getCollection()
+                                                          ->addFieldToFilter('segment_id', $data['segment_id']);
+
+                if (array_key_exists('disabled_modules', $data)) {
+                    foreach ($disabledModelCollection as $item) {
+                        $item->Delete();
+                    }
+
+                    foreach ($data['disabled_modules'] as $moduleName) {
+                        $disabledModel->setDisabledmoduleId(null);
+                        $disabledModel->setSegmentId($data['segment_id']);
+                        $disabledModel->setModuleName($moduleName);
+                        $disabledModel->Save();
+                    }
+                }
+
+            } catch (Mage_Core_Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+                Mage::getSingleton('adminhtml/session')->setPageData($data);
+                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('segment_id')));
+                return;
+            } catch (Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError($this->__('Unable to save the segment.'));
+                Mage::logException($e);
+            }
+        }
 
         parent::saveAction();
     }
