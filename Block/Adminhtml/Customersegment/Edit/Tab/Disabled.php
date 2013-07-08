@@ -16,20 +16,21 @@ class BlueAcorn_Disabler_Block_Adminhtml_Customersegment_Edit_Tab_Disabled
      */
     protected function _prepareForm()
     {
-        $model = Mage::registry('current_customer_segment');
+        $segment_model = Mage::registry('current_customer_segment');
 
         $form = new Varien_Data_Form();
-
-        $form->setHtmlIdPrefix('segment_');
 
         $fieldset = $form->addFieldset('base_fieldset', array(
             'legend' => 'Disabled Modules'
         ));
 
-        if ($model->getId()) {
-            $fieldset->addField('segment_id', 'hidden', array(
-                'name' => 'segment_id'
-            ));
+        $disabledModel = Mage::getModel('disabler/disabledmodule');
+        $disabledModelCollection  = $disabledModel->getCollection()
+                                                  ->addFieldToFilter('segment_id', $segment_model->getSegmentId());
+
+        $savedModuleNames = array();
+        foreach ($disabledModelCollection->getData() as $module) {
+            $savedModuleNames[] = $module['module_name'];
         }
 
         $module_names = array_keys((array)Mage::getConfig()->getNode('modules')->children());
@@ -40,21 +41,14 @@ class BlueAcorn_Disabler_Block_Adminhtml_Customersegment_Edit_Tab_Disabled
 
         $fieldset->addField('module_checkboxes', 'checkboxes', array(
             'label' => 'Modules to Disable',
-            'name' => 'Checkbox',
+            'name' => 'disabled_modules[]',
             'values' => $checkboxes,
-            'value' => '1',
+            'checked' => $savedModuleNames,
             'disabled' => false,
             'after_element_html' => '<small>Don\'t pay any attention to this</small>',
             'tabindex' => 1
         ));
 
-
-
-        if (!$model->getId()) {
-            $model->setData('is_active', '1');
-        }
-
-        $form->setValues($model->getData());
         $this->setForm($form);
 
         return parent::_prepareForm();
