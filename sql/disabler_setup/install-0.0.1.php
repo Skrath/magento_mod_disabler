@@ -2,13 +2,13 @@
 
 $installer = $this;
 $installer->startSetup();
-$table = $installer->getConnection()->newTable($installer->getTable('disabler/segmentdisable'))
-                   ->addColumn('segment_disable_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
+$table = $installer->getConnection()->newTable($installer->getTable('disabler/disabledmodule'))
+                   ->addColumn('disabledmodule_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
                        'unsigned' => true,
                        'nullable' => false,
                        'primary' => true,
                        'identity' => true,
-                   ), 'Segment_disable ID')
+                   ), 'Disabled Module ID')
                    ->addColumn('segment_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
                        'unsigned' => true,
                        'nullable' => false,
@@ -18,7 +18,7 @@ $table = $installer->getConnection()->newTable($installer->getTable('disabler/se
                    ->addColumn('module_name', Varien_Db_Ddl_Table::TYPE_TEXT, null, array(
                        'nullable' => false,
                    ), 'Module Name')
-                   ->addForeignKey('segment_key', 'segment_id', $installer->getTable('enterprise_customersegment/segment'), 'segment_id' );
+                   ->addForeignKey('FK_disabled_modules_segment', 'segment_id', $installer->getTable('enterprise_customersegment/segment'), 'segment_id' );
 /*     ->addColumn('title', Varien_Db_Ddl_Table::TYPE_TEXT, null, array( */
 /*         'nullable' => false, */
 /*         ), 'Blogpost Title') */
