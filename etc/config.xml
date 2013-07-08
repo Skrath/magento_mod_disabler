@@ -66,6 +66,18 @@
 	</observers>
       </controller_front_init_before>
 
+
+      <enterprise_customersegment_save_after>
+	<observers>
+	  <blueacorn_disabler>
+	    <type>singleton</type>
+	    <class>BlueAcorn_Disabler_Model_Observer</class>
+	    <method>saveSegmentTabData</method>
+	  </blueacorn_disabler>
+	</observers>
+      </enterprise_customersegment_save_after>
+
+
     </events>
 
   </global>
