@@ -9,6 +9,32 @@
 
   <global>
 
+    <models>
+      <disabler>
+	<class>BlueAcorn_Disabler_Model</class>
+	<resourceModel>disabledmodule_resource</resourceModel>
+      </disabler>
+
+      <disabledmodule_resource>
+	<class>BlueAcorn_Disabler_Model_Resource</class>
+	<entities>
+	  <disabledmodule>
+	    <table>disabled_modules</table>
+	  </disabledmodule>
+	</entities>
+      </disabledmodule_resource>
+
+    </models>
+
+    <resources>
+      <disabler_setup>
+	<setup>
+	  <module>BlueAcorn_Disabler</module>
+	  <class>BlueAcorn_Disabler_Model_Resource_Setup</class>
+	</setup>
+      </disabler_setup>
+    </resources>
+
     <blocks>
       <blueacorn_disabler>
 	<class>BlueAcorn_Disabler_Block</class>
