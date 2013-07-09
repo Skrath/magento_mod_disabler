@@ -44,10 +44,11 @@ class BlueAcorn_Disabler_Adminhtml_CustomersegmentController extends Enterprise_
                 $disabledModelCollection  = $disabledModel->getCollection()
                                                           ->addFieldToFilter('segment_id', $data['segment_id']);
 
+                foreach ($disabledModelCollection as $item) {
+                    $item->Delete();
+                }
+
                 if (array_key_exists('disabled_modules', $data)) {
-                    foreach ($disabledModelCollection as $item) {
-                        $item->Delete();
-                    }
 
                     foreach ($data['disabled_modules'] as $moduleName) {
                         $disabledModel->setDisabledmoduleId(null);
