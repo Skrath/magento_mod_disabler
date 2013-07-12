@@ -35,7 +35,7 @@ class BlueAcorn_Disabler_Model_Observer {
 
         // Disable its output as well (which was already loaded)
         $outputPath = "advanced/modules_disable_output/$moduleName";
-        if (!Mage::getStoreConfig($outputPath) && !Mage::app()->getStore()->Mage::app()->isAdmin()) {
+        if (!Mage::getStoreConfig($outputPath) && !Mage::app()->getStore()->isAdmin()) {
             Mage::app()->getStore()->setConfig($outputPath, true);
         }
     }
